@@ -15,6 +15,8 @@ describe('App', () => {
   });
 
   describe('when clicking the `add-gift` button ', () => {
+    const giftId = 1;
+
     // Run before each test unit in this describe block
     beforeEach(() => {
       // find() targets a child node by JSX tag or CSS class name
@@ -28,7 +30,7 @@ describe('App', () => {
     });
 
     it('should add a new gift to `state`', () => {
-      expect(app.state().gifts).toEqual([{ id: 1 }]);
+      expect(app.state().gifts).toEqual([{ id: giftId }]);
     });
 
     // Test pollution - make isolated instance because
@@ -40,6 +42,17 @@ describe('App', () => {
     it('should create a Gift component', () => {
       // Find via JSX
       expect(app.find('Gift').exists()).toBe(true);
+    });
+
+    describe('when the user wants to remove the added gift', () => {
+      beforeEach(() => {
+        // Access instance of component to run class methods
+        app.instance().removeGift(giftId);
+      });
+
+      it('should remove gift from `state`', () => {
+        expect(app.state().gifts).toEqual([]);
+      });
     });
   });
 });
