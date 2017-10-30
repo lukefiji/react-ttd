@@ -1,5 +1,5 @@
-import balanceReducer from './balance';
-import balanceReducer2 from './balance';
+import balanceReducer from './balanceReducer';
+import balanceReducer2 from './balanceReducer';
 import {
   SET_BALANCE,
   DEPOSIT_MONEY,

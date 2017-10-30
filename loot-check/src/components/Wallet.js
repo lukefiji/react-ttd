@@ -41,11 +41,10 @@ export class Wallet extends Component {
   }
 }
 
-export default connect(
-  state => {
-    return {
-      balance: state
-    };
-  },
-  { deposit, withdraw }
-)(Wallet);
+function mapStateToProps(state) {
+  return {
+    balance: state.balance
+  };
+}
+
+export default connect(mapStateToProps, { deposit, withdraw })(Wallet);
